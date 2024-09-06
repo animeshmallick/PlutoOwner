@@ -9,10 +9,9 @@ use stdClass;
 require("../Data/DBConnection.php");
 require("../Data/model/Product.php");
 
-class UpdateProductService
+class UpdateProductHelper
 {
-    public function getProductWithProductID($productID): ?Product
-    {
+    public function getProductWithProductID($productID){
         $connection = (new DBConnection())->get_db_connection();
         $sql_query_to_get_product = "SELECT * FROM products where product_id=" . $productID;
 
@@ -21,6 +20,7 @@ class UpdateProductService
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
 
+            /** @noinspection DuplicatedCode */
             $productID = $row["product_id"];
             $productName = $row["product_name"];
             $productTagsString = $row["product_tags"];
@@ -47,17 +47,15 @@ class UpdateProductService
     {
         $connection = (new DBConnection())->get_db_connection();
         $sql_query = $this->get_sql_query_to_update_product($newProduct);
+        $myObj = new stdClass();
         if ($connection->query($sql_query) === true) {
-            $myObj = new stdClass();
             $myObj->message = "Product updated successfully";
             $myObj->newProduct = $newProduct;
-            return $myObj;
         }else{
-            $myObj = new stdClass();
             $myObj->message = "Product not updated";
             $myObj->error = $connection->error;
-            return $myObj;
         }
+        return $myObj;
     }
     public function get_sql_query_to_update_product(Product $product): string
     {

@@ -1,11 +1,12 @@
 <?php
+/** @noinspection DuplicatedCode */
 
 use Data\model\Product;
 use Data\model\ProductTag;
 use Data\model\ProductUnit;
-use UpdateProduct\UpdateProductService;
-include("UpdateProductService.php");
-$helper = new UpdateProductService();
+use UpdateProduct\UpdateProductHelper;
+include("UpdateProductHelper.php");
+$helper = new UpdateProductHelper();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 

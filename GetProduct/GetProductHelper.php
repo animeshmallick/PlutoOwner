@@ -1,5 +1,5 @@
 <?php
-
+/** @noinspection DuplicatedCode */
 namespace GetProduct;
 
 use Data\DBConnection;
@@ -103,7 +103,7 @@ class GetProductHelper
         return $productTags;
     }
 
-    private function getMatchPercentage(array $productSearchTags, array $searchTags)
+    private function getMatchPercentage(array $productSearchTags, array $searchTags): float
     {
         $percent = 0.00;
         foreach ($searchTags as $etag) {
