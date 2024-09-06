@@ -12,7 +12,7 @@ require("../Data/model/Product.php");
 class GetProductHelper
 {
     //ToDo: $updateLink hardcoded temporarily at line 110.needs to be figured out
-    private $updateProductURL = "http://%s/PlutoAdmin/UpdateProduct/UpdateProduct.php?product_id=%s";
+    private $updateProductURL = "http://%s/PlutoOwner/UpdateProduct/UpdateProduct.php?product_id=%s";
 
     public function getProductSearchKeywords(array $searchTags): array
     {
