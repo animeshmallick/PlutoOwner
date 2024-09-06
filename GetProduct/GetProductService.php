@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
     if (isset($_GET['update_product'])){
         $updateProduct = $_GET['update_product'];
-        if ($updateProduct){
+        if ($updateProduct == 'true'){
             $updateFlag = true;        
         }
     }

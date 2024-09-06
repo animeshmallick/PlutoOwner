@@ -11,7 +11,7 @@ require("../Data/model/Product.php");
 
 class GetProductHelper
 {
-    //ToDo: $updateLink hardcoded temporarily at line 110.needs to be figured out
+    //ToDo: $updateLink hardcoded temporarily string
     private $updateProductURL = "http://%s/PlutoOwner/UpdateProduct/UpdateProduct.php?product_id=%s";
 
     public function getProductSearchKeywords(array $searchTags): array

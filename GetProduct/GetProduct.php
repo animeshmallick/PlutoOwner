@@ -23,7 +23,7 @@ $productTags = (new ProductTag())->getProductCategories();
         <input type="checkbox" name="tag[]" id="product_tag" value ="<?php echo $productTags[$i];?>"><?php echo $productTags[$i];?>  <br />
     <?php }?><br /><br />
 
-    <input type="checkbox" name="update_product" id="update_product" value="Check to update product">
+    <input type="checkbox" name="update_product" id="update_product" value="true">
     <label for="update_product">With Update Product Link</label>
     <br /><br />
     <input type = "submit">
