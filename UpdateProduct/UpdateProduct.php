@@ -4,13 +4,14 @@ use Data\model\Product;
 use Data\model\ProductTag;
 use Data\model\ProductUnit;
 use UpdateProduct\UpdateProductService;
+include("UpdateProductService.php");
+$helper = new UpdateProductService();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    require("UpdateProductService.php");
 
     $myObj = new stdClass();
     $myObj->method = 'GET';
-    $helper = new UpdateProductService();
+
 
     if (isset($_GET['product_id'])) {
         $product_id = $_GET['product_id'];
@@ -113,13 +114,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $productIsRestricted = $_POST['is_restricted'];
         $productInventory = $_POST['unit_count'];
 
-        require ("../Data/model/Product.php");
         $newProduct = new Product($productID, $productTags, $productName, $productDescription,
                                     $productKeywords, $productUnit, $productUnitCost,
                                     $productUnitMRP, 0.0, "Not Set",
                       true, $productInventory, $productIsRestricted);
+        $resp = $helper->updateProductInDB($newProduct);
         header('Content-Type: application/json');
-        echo json_encode($newProduct);
+        echo json_encode($resp);
     }
 }
 exit;
